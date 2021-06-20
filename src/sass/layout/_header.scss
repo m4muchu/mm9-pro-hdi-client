@@ -1,0 +1,23 @@
+.header {
+    .ant-layout-header {
+        background: rgba(221,58,63,.85);
+    }
+    .ant-menu {
+        background: none;
+        color: #fff;
+
+        &-item:hover{
+            color: #fff;
+        }
+    }
+
+    .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover {
+        color: #fff;
+    }
+
+    .ant-menu.ant-menu-dark .ant-menu-item-selected{
+        background-color: transparent !important;
+    }
+
+}
+
