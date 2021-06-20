@@ -1,0 +1,85 @@
+.product_card {
+  position: relative;
+  background: white;
+  text-align: center;
+  border: 1px solid #ebebeb;
+  display: inline-block;
+  width: 20rem;
+  margin-top: -1px;
+  // new,best
+  &_tag {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 30px;
+    background: #dd3a3fd9;
+    box-shadow: none;
+    padding: 0 20px;
+    color: #fff;
+    height: 1.8rem;
+    padding-top: 3px;
+    // line-height: inherit;
+  }
+  &_image {
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    background-size: cover;
+  }
+  &_name {
+    color: #2e2e2e;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 5px;
+    display: block;
+  }
+  &_action {
+    & > button {
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 30px;
+      background: #343434;
+      box-shadow: none;
+      padding: 0 20px;
+      color: #fff;
+      height: 2.2rem;
+      line-height: inherit;
+    }
+  }
+  &_price {
+    font-size: 1rem;
+    color: #292929;
+    font-weight: 500;
+  }
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(250, 235, 235, 0.2);
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: 0.5s ease;
+}
+
+.product_card:hover .overlay {
+  width: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}

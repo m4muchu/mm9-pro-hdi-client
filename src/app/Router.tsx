@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history'
 import Home from '../features/home/home'
 import HeaderLayout from './layout/Header'
 import FooterLayout from './layout/Footer'
+import ProductView from '../features/productView/productView'
 // import { Redirect } from "react-router";
 
 export const routerHistory = createBrowserHistory()
@@ -16,6 +17,11 @@ const routes = [
   {
     path: '/home',
     component: Home,
+    exact: true,
+  },
+  {
+    path: '/product',
+    component: ProductView,
     exact: true,
   },
 ]
