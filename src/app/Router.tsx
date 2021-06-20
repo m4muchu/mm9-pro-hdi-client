@@ -32,7 +32,7 @@ const Router = () => (
     <ReactRouter history={routerHistory}>
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
         {routes.map(route => (
-          <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+          <Content className="site-layout" style={{ marginTop: 64 }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>List</Breadcrumb.Item>
