@@ -114,17 +114,14 @@ function ProductView() {
                             <Row >
                                 <Col><div className="product_view_item_colour"></div></Col>
                                 <Col><div className="product_view_item_colour"></div></Col>
-
                             </Row>
                             <p className="product_view_data_atributes">quantity</p>
                             <Row >
                                 <Col span={8}><InputNumber min={1} max={10} defaultValue={3} /> </Col>
                                 <Col span={8}><button className="product_view_cart_button">Add to cart</button> </Col>
                                 <Col span={8}><button>inStock</button> </Col>
-
                             </Row>
                             <p>Share</p></Col></Row>
-
                 </Col>
             </Row>
         </>

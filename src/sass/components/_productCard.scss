@@ -4,29 +4,58 @@
   text-align: center;
   border: 1px solid #ebebeb;
   display: inline-block;
-  width: 20rem;
+  width: 290px;
   margin-top: -1px;
+  // width: 40rem;
+  &:hover {
+    border: 2px solid #dd3a3fd9;
+  }
   // new,best
   &_tag {
     position: absolute;
     top: 1rem;
     left: 1.2rem;
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 500;
     border-radius: 30px;
     background: #dd3a3fd9;
     box-shadow: none;
     padding: 0 20px;
     color: #fff;
-    height: 1.8rem;
+    height: 1.7rem;
     padding-top: 3px;
     // line-height: inherit;
   }
+  &_quickview {
+    top: 65% !important;
+  }
+
+  &_quickview,
+  &_addtocart {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+  }
+
   &_image {
-    height: 20rem;
-    width: 20rem;
+    // height: 20rem;
+    // width: 20rem;
     object-fit: cover;
     background-size: cover;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    height: auto;
+  }
+
+  img {
+    vertical-align: middle;
   }
   &_name {
     color: #2e2e2e;
@@ -38,21 +67,15 @@
   }
   &_action {
     & > button {
-      font-size: 12px;
-      font-weight: 500;
-      border-radius: 30px;
-      background: #343434;
-      box-shadow: none;
-      padding: 0 20px;
-      color: #fff;
-      height: 2.2rem;
-      line-height: inherit;
+      @include roundButton;
+      background-color: #292929;
     }
   }
   &_price {
     font-size: 1rem;
     color: #292929;
     font-weight: 500;
+    margin-top: 1em;
   }
 }
 
@@ -70,16 +93,4 @@
 
 .product_card:hover .overlay {
   width: 100%;
-}
-
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  white-space: nowrap;
 }
