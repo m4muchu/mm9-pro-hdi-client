@@ -12,6 +12,9 @@
     line-height: 24px;
     text-transform: capitalize;
   }
+  &_share {
+    margin-top: 20px;
+  }
   &_data_description {
     color: #898989;
   }
@@ -28,6 +31,7 @@
   &_cart_instock {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
     font-size: 12px;
     font-weight: 500;
     border-radius: 30px;
@@ -41,6 +45,8 @@
 
     @include roundButton;
     background: #343434;
+=======
+>>>>>>> home layouting
   }
 }
 .product_view_data {
@@ -48,5 +54,10 @@
     margin-top: 10px;
     padding-top: 10px;
     background-color: green($color: #000000);
+  }
+  &_price {
+    margin-top: 10px;
+    font-weight: 700;
+    line-height: 1.1;
   }
 }

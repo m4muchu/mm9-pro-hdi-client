@@ -9,6 +9,7 @@ function ProductCard() {
             <img
                 className="product_card_image"
                 src="http://demo.posthemes.com/pos_aboss/layout2/36-large_default/printed-dress.jpg"
+                alt=""
             ></img>
             <div className="product_card_action overlay">
                 <button className="product_card_quickview common_round_button">QUICK VIEW</button>
