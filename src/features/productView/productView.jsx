@@ -3,6 +3,7 @@ import _ from 'lodash'
 import img1 from './dial.png'
 import { Row, Col, Select, InputNumber } from 'antd'
 import Star from '../../utils/Star'
+import Carousal from '../../components/carousal'
 
 // import AliceCarousel from 'react-alice-carousel';
 // import 'react-alice-carousel/lib/alice-carousel.css'
@@ -17,80 +18,11 @@ function ProductView() {
         ))
     }
 
-    const items = [
-        <img src={img1} onDragStart={handleDragStart} alt="" />,
-        <img src={img1} onDragStart={handleDragStart} alt="" />,
-        <img src={img1} onDragStart={handleDragStart} alt="" />,
-    ]
-    const [mainIndex, setMainIndex] = useState(0)
-    const [mainAnimation, setMainAnimation] = useState(false)
-    const [thumbIndex, setThumbIndex] = useState(0)
-    const [thumbAnimation, setThumbAnimation] = useState(false)
-    const [thumbs] = useState(thumbItems(items, [setThumbIndex, setThumbAnimation]))
-
-    const slideNext = () => {
-        if (!thumbAnimation && thumbIndex < thumbs.length - 1) {
-            setThumbAnimation(true)
-            setThumbIndex(thumbIndex + 1)
-        }
-    }
-
-    const slidePrev = () => {
-        if (!thumbAnimation && thumbIndex > 0) {
-            setThumbAnimation(true)
-            setThumbIndex(thumbIndex - 1)
-        }
-    }
-
-    const syncMainBeforeChange = e => {
-        setMainAnimation(true)
-    }
-
-    const syncMainAfterChange = e => {
-        setMainAnimation(false)
-
-        if (e.type === 'action') {
-            setThumbIndex(e.item)
-            setThumbAnimation(false)
-        } else {
-            setMainIndex(thumbIndex)
-        }
-    }
-
-    const syncThumbs = e => {
-        setThumbIndex(e.item)
-        setThumbAnimation(false)
-
-        if (!mainAnimation) {
-            setMainIndex(e.item)
-        }
-    }
     return (
         <>
             <Row className="product_view" span={24}>
                 <Col className="product_view_image" span={12}>
-                    {/* <AliceCarousel
-                        activeIndex={mainIndex}
-                        animationType="fadeout"
-                        animationDuration={800}
-                        disableDotsControls
-                        disableButtonsControls
-                        infinite
-                        items={items}
-                        mouseTracking={!thumbAnimation}
-                        onSlideChange={syncMainBeforeChange}
-                        onSlideChanged={syncMainAfterChange}
-                        touchTracking={!thumbAnimation}
-                    />, */}
-                    <div className="thumbs">
-                        {/*  */}
-                        <div className="btn-prev" onClick={slidePrev}>
-                            &lang;
-            </div>
-                        <div className="btn-next" onClick={slideNext}>
-                            &rang;
-            </div>
-                    </div>
+                    <Carousal />
                 </Col>
 
                 <Col className="product_view_data" span={12}>
