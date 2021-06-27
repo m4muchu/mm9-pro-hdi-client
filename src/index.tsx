@@ -6,7 +6,8 @@ import { Provider } from 'react-redux'
 import 'antd/dist/antd.css'
 import './sass/main.scss'
 import * as serviceWorker from './serviceWorker'
-
+import 'slick-carousel/slick/slick.scss'
+import 'slick-carousel/slick/slick-theme.scss'
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
