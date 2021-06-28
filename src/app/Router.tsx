@@ -1,13 +1,11 @@
 import React, { Suspense } from 'react'
-import { Router as ReactRouter, Route } from 'react-router-dom'
+import { BrowserRouter as ReactRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { Layout, Spin, Breadcrumb } from 'antd'
+import { Layout, Spin } from 'antd'
 
 import { createBrowserHistory } from 'history'
-import Home from '../features/home/home'
 import HeaderLayout from './layout/Header'
 import FooterLayout from './layout/Footer'
-// import { Redirect } from "react-router";
 
 export const routerHistory = createBrowserHistory()
 const { Content } = Layout
@@ -15,7 +13,12 @@ const { Content } = Layout
 const routes = [
   {
     path: '/home',
-    component: Home,
+    component: React.lazy(() => import('../features/home/home')),
+    exact: true,
+  },
+  {
+    path: '/login',
+    component: React.lazy(() => import('../features/auth/Login')),
     exact: true,
   },
 ]
@@ -23,23 +26,21 @@ const routes = [
 const Router = () => (
   <Suspense fallback={<Spin />}>
     <HeaderLayout />
-    <ReactRouter history={routerHistory}>
+    <ReactRouter>
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-        {routes.map(route => (
-          <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
-              <Breadcrumb.Item>List</Breadcrumb.Item>
-              <Breadcrumb.Item>App</Breadcrumb.Item>
-            </Breadcrumb>
-            <Route
-              path={route.path}
-              component={route.component}
-              key={route.path}
-              exact={route.exact}
-            />
-          </Content>
-        ))}
+        <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+          <Switch>
+            <Route path={'/'} exact={true} render={() => <Redirect to="/home" />} />
+            {routes.map(route => (
+              <Route
+                path={route.path}
+                component={route.component}
+                key={route.path}
+                exact={route.exact}
+              />
+            ))}
+          </Switch>
+        </Content>
       </div>
     </ReactRouter>
     <FooterLayout />

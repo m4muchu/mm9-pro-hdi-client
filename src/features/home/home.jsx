@@ -1,9 +1,13 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 
-export default function home() {
-    return (
-        <div>
-            test data
-        </div>
-    )
+const Home = () => {
+  const history = useHistory()
+  return (
+    <div>
+      <button onClick={() => history.push('/login')}>login</button>
+    </div>
+  )
 }
+
+export default Home

@@ -19,5 +19,13 @@
         background-color: transparent !important;
     }
 
+    .ant-menu-horizontal {
+        border-bottom: none;
+    }
+
+    .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected {
+        color: #fff;
+    }
+
 }
 
