@@ -1,13 +1,10 @@
 import React from 'react'
-import { useHistory } from 'react-router'
+import ProductSections from '../../utils/productSections'
 
-const Home = () => {
-  const history = useHistory()
+export default function Home() {
   return (
     <div>
-      <button onClick={() => history.push('/login')}>login</button>
+      <ProductSections />
     </div>
   )
 }
-
-export default Home
