@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history'
 import Home from '../features/home/home'
 import HeaderLayout from './layout/Header'
 import FooterLayout from './layout/Footer'
+import ProductView from '../features/productView/productView'
 // import { Redirect } from "react-router";
 
 export const routerHistory = createBrowserHistory()
@@ -18,6 +19,11 @@ const routes = [
     component: Home,
     exact: true,
   },
+  {
+    path: '/product',
+    component: ProductView,
+    exact: true,
+  },
 ]
 
 const Router = () => (
@@ -26,7 +32,7 @@ const Router = () => (
     <ReactRouter history={routerHistory}>
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
         {routes.map(route => (
-          <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
+          <Content className="site-layout" style={{ marginTop: 64 }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>List</Breadcrumb.Item>

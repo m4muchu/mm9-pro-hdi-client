@@ -1,8 +1,12 @@
 // @import 'abstracts/variables';
 // @import 'abstracts/functions';
-// @import 'abstracts/mixins';
+@import 'abstracts/mixins';
 
 @import 'layout/header';
+@import 'pages/productView';
+@import 'components/productCard';
+@import 'components/star';
+@import 'components/carousal';
 
 // @import 'base/typography';
 // @import 'base/base';

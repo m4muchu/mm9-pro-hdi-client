@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductSections from '../../utils/productSections'
 
-export default function home() {
+export default function Home() {
     return (
         <div>
-            test data
+            <ProductSections />
         </div>
     )
 }
