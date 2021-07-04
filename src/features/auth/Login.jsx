@@ -59,7 +59,7 @@ const Login = () => {
               <div className="login-button-wrapper">
                 <Form.Item>
                   <Button type="primary" onClick={() => handleSubmit()}>
-                    Submit
+                    LOGIN
                   </Button>
                 </Form.Item>
               </div>
