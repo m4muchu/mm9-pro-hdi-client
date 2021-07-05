@@ -1,6 +1,8 @@
 @import '~bootstrap-css-only/css/bootstrap.min.css';
 @import 'abstracts/variables';
 @import 'abstracts/functions';
+// @import 'abstracts/variables';
+@import 'abstracts/override';
 @import 'abstracts/mixins';
 
 @import 'base/base';
@@ -12,16 +14,12 @@
 @import 'pages/productView';
 @import 'components/productCard';
 @import 'components/star';
-<<<<<<< HEAD
-<<<<<<< HEAD
 @import 'components/carousal';
-=======
->>>>>>> updates
-=======
 @import 'components/carousal';
->>>>>>> carousal added
+@import 'components/productFilter';
 
 @import 'components/card';
 
 @import 'pages/home';
 @import 'pages/login';
+@import 'pages/checkout';

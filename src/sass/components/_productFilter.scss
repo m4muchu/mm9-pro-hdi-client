@@ -1,0 +1,28 @@
+.product_filter {
+  //   @include middle;
+
+  li {
+    line-height: 25px !important;
+    margin-top: 0.7rem;
+  }
+  &_title {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #363636;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 1rem;
+  }
+  &_clear_button {
+    text-transform: lowercase;
+    color: #acaaa6;
+    // box-shadow: 0.0625rem 0.0625rem 0.0625rem 0 rgb(0 0 0 / 10%);
+    padding: 0.25rem;
+    margin: 0.25rem 0;
+    font-weight: 400;
+    font-size: 0.875rem;
+
+    background-color: #333;
+    border-color: transparent;
+  }
+}
