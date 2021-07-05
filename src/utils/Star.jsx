@@ -1,8 +1,7 @@
 import React from 'react'
-
 const Star = props => {
-  const changeGrade = e => {
-    props.changeGradeIndex(e.target.value)
+  const changeColour = e => {
+    // props.changeGradeIndex(e.target.value);
   }
 
   return (
@@ -13,7 +12,7 @@ const Star = props => {
         id={props.grade}
         value={props.index}
         className="stars_radio-input"
-        onClick={changeGrade}
+        onClick={() => changeColour()}
       />
       <svg
         width="16"

@@ -18,4 +18,8 @@ export const portalRoutes = [
     path: '/',
     component: React.lazy(() => import('../features/home/Home')),
   },
+  {
+    path: '/checkout/',
+    component: React.lazy(() => import('../features/checkout/checkout')),
+  },
 ]
