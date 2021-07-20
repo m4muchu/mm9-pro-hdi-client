@@ -2,12 +2,18 @@ import React from 'react'
 import { Row, Col, Select, InputNumber, Card } from 'antd'
 import Icon from '@ant-design/icons';
 import ProductFilter from '../../components/productFilter';
+import CartModal from '../../components/cartModal';
+import CartDropdown from '../../components/cartDropdown';
+
 
 function checkout() {
     const { Option } = Select
 
     return (
         <div>
+            {/* <CartModal /> */}
+
+            {/* <CartDropdown /> */}
             <ProductFilter />
             {/* <Row gutter={24}>
                 <Col span={14} offset={3}>
@@ -67,8 +73,7 @@ function checkout() {
                     </Card>
                 </Col>
             </Row>
-            <p className="checkout_back"><span>&lt;</span>Continue shopping</p>
-        </div> */}
+            <p className="checkout_back"><span>&lt;</span> Continue shopping</p> */}
         </div>
     )
 }
