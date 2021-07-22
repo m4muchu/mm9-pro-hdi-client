@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout, Dropdown, Menu, Input } from 'antd'
-import { ShoppingCartOutlined } from '@ant-design/icons'
+import { Layout, Dropdown, Menu, Input, Badge } from 'antd'
+import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
 import { routerHistory } from '../Router'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -24,6 +24,18 @@ const menu = (
   </Menu>
 )
 
+const userProfileMenu = (
+  <Menu>
+    <Menu.ItemGroup>
+      <Menu.Item>
+        <Link to="/login/">Login In</Link>
+      </Menu.Item>
+      <Menu.Item>Sign In</Menu.Item>
+      <Menu.Item>My Account</Menu.Item>
+    </Menu.ItemGroup>
+  </Menu>
+)
+
 const HeaderLayout = () => {
   const history = useHistory()
 
@@ -35,14 +47,17 @@ const HeaderLayout = () => {
     {
       label: 'Women',
       to: '/women/',
+      dropDown: menu,
     },
     {
       label: 'Men',
-      to: '/mwn/',
+      to: '/men/',
+      dropDown: menu,
     },
     {
       label: 'Accessories',
       to: '/accessories/',
+      dropDown: menu,
     },
   ]
   console.log('history+++++++++++++', routerHistory)
@@ -70,29 +85,53 @@ const HeaderLayout = () => {
           <div className="header-navbar-collapse collapse navbar-collapse" id="navbarTogglerDemo02">
             {/* header-navbar-nav-item-selected  */}
             <ul className="header-navbar-nav navbar-nav me-auto mb-2 mb-lg-0">
-              {navItems.map(nav => (
-                <Dropdown overlay={menu}>
+              {navItems.map(nav =>
+                nav.dropDown ? (
+                  <Dropdown overlay={menu}>
+                    <li className="header-navbar-nav-item nav-item">
+                      <Link
+                        className="nav-link text-uppercase text-white ml-2"
+                        aria-current="page"
+                        to={nav.to}
+                        key={nav.label}
+                      >
+                        {nav.label}
+                      </Link>
+                    </li>
+                  </Dropdown>
+                ) : (
                   <li className="header-navbar-nav-item nav-item">
                     <Link
                       className="nav-link text-uppercase text-white ml-2"
                       aria-current="page"
-                      to="/home/"
+                      to={nav.to}
                       key={nav.label}
                     >
                       {nav.label}
                     </Link>
                   </li>
-                </Dropdown>
-              ))}
+                ),
+              )}
             </ul>
             <div class="header__search">
               <Search
-                placeholder="input search text"
+                placeholder="Search for products, brands and more"
                 // onSearch={onSearch}
-                style={{ width: 230 }}
+                style={{ width: '30rem' }}
               />
             </div>
-            <div className="header__cart">{/* <ShoppingCartOutlined /> */}</div>
+            <div className="ml-5">
+              <Dropdown overlay={userProfileMenu}>
+                <UserOutlined style={{ fontSize: '2.3rem', color: '#fff', cursor: 'pointer' }} />
+              </Dropdown>
+            </div>
+            <div className="ml-5">
+              <Badge count={5}>
+                <ShoppingCartOutlined
+                  style={{ fontSize: '2.3rem', color: '#fff', cursor: 'pointer' }}
+                />
+              </Badge>
+            </div>
           </div>
         </div>
       </div>

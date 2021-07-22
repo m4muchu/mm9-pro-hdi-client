@@ -16,6 +16,10 @@
     "@types/react-router": "^5.1.15",
     "@types/react-router-dom": "^5.1.7",
     "antd": "^4.16.3",
+    "axios": "^0.21.1",
+    "bootstrap-css-only": "^4.4.1",
+    "camelcase-keys": "^7.0.0",
+    "env-cmd": "^10.1.0",
     "history": "4.10.1",
     "lodash": "^4.17.21",
     "node-sass": "4.14.1",
@@ -27,11 +31,16 @@
     "react-slick": "^0.28.1",
     "save-dev": "^0.0.1-security",
     "slick-carousel": "^1.8.1",
+    "snakecase-keys": "^4.0.2",
     "typescript": "~4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:staging": "env-cmd -f .env.staging react-scripts start",
+    "start:prod": "env-cmd -f .env.production react-scripts start",
     "build": "react-scripts build",
+    "build:dev": "env-cmd -f .env.development react-scripts build",
+    "build:staging": "env-cmd -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

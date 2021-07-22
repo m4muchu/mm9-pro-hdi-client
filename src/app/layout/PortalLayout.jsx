@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
 import { Route, Switch } from 'react-router'
 import { Layout } from 'antd'
 import { portalRoutes } from '../../routes/portal'
+import { PrivateRoute } from './PrivateRoute'
 
 import HeaderLayout from './Header'
 import FooterLayout from './Footer'
@@ -18,7 +18,11 @@ export const PortalLayout = () => {
   const switchRoutes = (
     <Switch>
       {portalRoutes.map((prop, key) => {
-        return <Route path={prop.path} component={prop.component} key={key} />
+        return prop.needsAuth ? (
+          <PrivateRoute exact path={prop.path} component={prop.component} key={key} />
+        ) : (
+          <Route path={prop.path} component={prop.component} key={key} />
+        )
       })}
     </Switch>
   )

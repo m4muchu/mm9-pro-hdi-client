@@ -1,20 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Input, Button, PageHeader } from 'antd'
-
-// const layout = {
-//   labelCol: { span: 8 },
-//   wrapperCol: { span: 16 },
-// }
-// const tailLayout = {
-//   wrapperCol: { offset: 8, span: 16 },
-// }
+import { useHistory } from 'react-router-dom'
+import { authServices } from '../../api/auth'
+import { loginParam } from './model'
+import { configConstants } from '../../constants/config-constants'
+import { LoginResponse } from './model'
 
 const Login = () => {
   const [form] = Form.useForm()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  const history = useHistory()
+
+  const apiCalls = {
+    loginApi: (params: loginParam) => {
+      setIsLoading(true)
+      authServices
+        .login(params)
+        .then((response: LoginResponse) => {
+          const { data } = response
+          if (data) {
+            localStorage.setItem(configConstants.TOKEN_NAME, data.accessToken)
+            history.push('/')
+          }
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    },
+  }
 
   const handleSubmit = () => {
     form.validateFields().then(values => {
-      console.log('values+++++++++++++', values)
+      apiCalls.loginApi(values)
     })
   }
 
@@ -34,15 +52,15 @@ const Login = () => {
             >
               <Form.Item
                 label="Email"
-                name="username"
+                name="email"
                 rules={[
                   {
                     type: 'email',
-                    message: 'The input is not valid E-mail!',
+                    message: 'The input is not valid email!',
                   },
                   {
                     required: true,
-                    message: 'Please input your E-mail!',
+                    message: 'Please input your email!',
                   },
                 ]}
               >
@@ -58,7 +76,12 @@ const Login = () => {
               </Form.Item>
               <div className="login-button-wrapper">
                 <Form.Item>
-                  <Button type="primary" onClick={() => handleSubmit()}>
+                  <Button
+                    type="primary"
+                    onClick={() => handleSubmit()}
+                    style={{ backgroundColor: '#333' }}
+                    loading={isLoading}
+                  >
                     LOGIN
                   </Button>
                 </Form.Item>
