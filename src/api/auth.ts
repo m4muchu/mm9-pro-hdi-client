@@ -3,6 +3,7 @@ import { request } from './httpService'
 
 export const authServices = {
   login,
+  signIn,
 }
 
 function login(params: loginParam) {
@@ -11,7 +12,17 @@ function login(params: loginParam) {
     method: 'POST',
     url: 'auth/store/login/',
     param: params,
-    is_authenticated: false,
-    content_type: 'json',
+    isAuthenticated: false,
+    contentType: 'json',
+  })
+}
+
+function signIn(params: loginParam) {
+  return request({
+    method: 'POST',
+    url: 'auth/store/register/',
+    param: params,
+    isAuthenticated: false,
+    contentType: 'json',
   })
 }

@@ -12,21 +12,21 @@ export const history = createBrowserHistory()
 //Common Request
 export function request(options){
     console.log('options++++++++++++++', options)
-    if( options.cancel_token && cancel[options.cancel_token] ){
-        cancel[options.cancel_token]();
+    if( options.cancelToken && cancel[options.cancelToken] ){
+        cancel[options.cancelToken]();
     }
     return axios(
         requestOptions(
             options.method,
             options.url,
             options.param,
-            options.is_authenticated,
-            options.content_type,
-            options.cancel_token
+            options.isAuthenticated,
+            options.contentType,
+            options.cancelToken
         )
     )
     .then(function (response) {
-        return handleResponse(options.route, response, options.is_authenticated)
+        return handleResponse(options.route, response, options.isAuthenticated)
     })
     .catch(function (error) {
         if (axios.isCancel(error)) {
@@ -45,11 +45,11 @@ function getRouteApiUrl(){
 
 // dowload file attachment
 export function downloadAttachment(options) {
-    let full_url = getRouteApiUrl();
-    let url = full_url + options.url;
+    let fullUrl = getRouteApiUrl();
+    let url = fullUrl + options.url;
     let params = options.param;
 
-    if (options.is_authenticated) {
+    if (options.isAuthenticated) {
         let token;
         token = localStorage.getItem(configConstants.TOKEN_NAME);
         params.token = token;
@@ -60,15 +60,15 @@ export function downloadAttachment(options) {
 }
 
 //Formate Request Options
-export function requestOptions(method = 'GET', url=null, params = null, is_authenticated = true, content_type = null, cancel_token = null ) {
-    let full_url =  getRouteApiUrl();
+export function requestOptions(method = 'GET', url=null, params = null, isAuthenticated = true, contentType = null, cancelToken = null ) {
+    let fullUrl =  getRouteApiUrl();
     let requestOptions = {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
         credentials: 'include',
         method,
-        url: full_url + url
+        url: fullUrl + url
     };
-    if( is_authenticated ){
+    if( isAuthenticated ){
         let token = localStorage.getItem(configConstants.TOKEN_NAME);
         if( token ){
             requestOptions.headers.Authorization ='Bearer '+ token;
@@ -77,16 +77,16 @@ export function requestOptions(method = 'GET', url=null, params = null, is_authe
     if(method ==='GET' && params){
         requestOptions.params =  snakeCaseKeys(params, { deep: true });
     }
-    else if( content_type === 'json' ) {
+    else if( contentType === 'json' ) {
         requestOptions.headers['Content-Type'] = 'application/json';
         requestOptions.data = snakeCaseKeys(params, { deep: true });
     }
     else {
         requestOptions.data = snakeCaseKeys(params, { deep: true });
     }
-    if( cancel_token ){
+    if( cancelToken ){
         requestOptions.cancelToken = new CancelToken(function executor(c) {
-            cancel[cancel_token] = c;
+            cancel[cancelToken] = c;
         });
     }
 

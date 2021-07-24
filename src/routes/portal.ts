@@ -7,6 +7,10 @@ export const portalRoutes = [
     component: React.lazy(() => import('../features/auth/Login')),
   },
   {
+    path: '/sign-in/',
+    component: React.lazy(() => import('../features/auth/SignIn')),
+  },
+  {
     path: '/product-view/',
     component: React.lazy(() => import('../features/productView/productView')),
   },

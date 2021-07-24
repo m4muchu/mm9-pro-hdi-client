@@ -4,7 +4,7 @@ import { Form, Input, Button, PageHeader } from 'antd'
 import { isEmpty } from 'lodash'
 import { useHistory } from 'react-router-dom'
 import { authServices } from '../../api/auth'
-import { loginParam } from './model'
+import { signInParam } from './model'
 import { configConstants } from '../../constants/config-constants'
 import { LoginResponse } from './model'
 import { setUserAuthenticated } from './authSlice'
@@ -18,10 +18,10 @@ const Login = () => {
   const history = useHistory()
 
   const apiCalls = {
-    loginApi: (params: loginParam) => {
+    signInApi: (params: signInParam) => {
       setIsLoading(true)
       authServices
-        .login(params)
+        .signIn(params)
         .then((response: LoginResponse) => {
           const { data } = response
           if (data.accessToken) {
@@ -42,13 +42,13 @@ const Login = () => {
 
   const handleSubmit = () => {
     form.validateFields().then(values => {
-      apiCalls.loginApi(values)
+      apiCalls.signInApi(values)
     })
   }
 
   return (
     <div className="login">
-      <PageHeader className="site-page-header" title="Login to your account" />
+      <PageHeader className="site-page-header" title="Sign In to your account" />
 
       <div className="login-wrapper">
         <div className="card-custom">
@@ -60,6 +60,13 @@ const Login = () => {
               name="basic"
               initialValues={{ remember: true }}
             >
+              <Form.Item
+                name="name"
+                label="Name"
+                rules={[{ required: true, message: 'Please input your name!', whitespace: true }]}
+              >
+                <Input />
+              </Form.Item>
               <Form.Item
                 label="Email"
                 name="email"
@@ -84,6 +91,32 @@ const Login = () => {
               >
                 <Input.Password />
               </Form.Item>
+
+              <Form.Item
+                name="confirm"
+                label="Confirm Password"
+                dependencies={['password']}
+                hasFeedback
+                rules={[
+                  {
+                    required: true,
+                    message: 'Please confirm your password!',
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue('password') === value) {
+                        return Promise.resolve()
+                      }
+                      return Promise.reject(
+                        new Error('The two passwords that you entered do not match!'),
+                      )
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password />
+              </Form.Item>
+
               {!isEmpty(serverValidationMessage) && (
                 <p className="text-danger">{serverValidationMessage}</p>
               )}
@@ -95,7 +128,7 @@ const Login = () => {
                     style={{ backgroundColor: '#333' }}
                     loading={isLoading}
                   >
-                    LOGIN
+                    SIGN IN
                   </Button>
                 </Form.Item>
               </div>

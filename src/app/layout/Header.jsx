@@ -3,6 +3,9 @@ import { Layout, Dropdown, Menu, Input, Badge } from 'antd'
 import { ShoppingCartOutlined, UserOutlined } from '@ant-design/icons'
 import { routerHistory } from '../Router'
 import { Link, useHistory } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { isAuthenticated, setUserAuthenticated } from '../../features/auth/authSlice'
+import { configConstants } from '../../constants/config-constants'
 
 const { SubMenu } = Menu
 const { Search } = Input
@@ -24,20 +27,11 @@ const menu = (
   </Menu>
 )
 
-const userProfileMenu = (
-  <Menu>
-    <Menu.ItemGroup>
-      <Menu.Item>
-        <Link to="/login/">Login In</Link>
-      </Menu.Item>
-      <Menu.Item>Sign In</Menu.Item>
-      <Menu.Item>My Account</Menu.Item>
-    </Menu.ItemGroup>
-  </Menu>
-)
-
 const HeaderLayout = () => {
   const history = useHistory()
+  const dispatch = useAppDispatch()
+
+  const loggedIn = useAppSelector(isAuthenticated)
 
   const navItems = [
     {
@@ -61,6 +55,36 @@ const HeaderLayout = () => {
     },
   ]
   console.log('history+++++++++++++', routerHistory)
+
+  const userLogout = () => {
+    localStorage.removeItem(configConstants.TOKEN_NAME)
+    dispatch(setUserAuthenticated({ authenticated: false }))
+  }
+
+  const userProfileMenu = loggedIn => {
+    return (
+      <Menu>
+        <>
+          {!loggedIn ? (
+            <>
+              <Menu.Item>
+                <Link to="/login/">Login</Link>
+              </Menu.Item>
+              <Menu.Item>
+                <Link to="/sign-in/">Sign In</Link>
+              </Menu.Item>
+            </>
+          ) : (
+            <>
+              <Menu.Item>My Account</Menu.Item>
+              <Menu.Item onClick={() => userLogout()}>Logout</Menu.Item>
+            </>
+          )}
+        </>
+      </Menu>
+    )
+  }
+
   return (
     <div className="header">
       <div
@@ -121,7 +145,7 @@ const HeaderLayout = () => {
               />
             </div>
             <div className="ml-5">
-              <Dropdown overlay={userProfileMenu}>
+              <Dropdown overlay={() => userProfileMenu(loggedIn)}>
                 <UserOutlined style={{ fontSize: '2.3rem', color: '#fff', cursor: 'pointer' }} />
               </Dropdown>
             </div>
