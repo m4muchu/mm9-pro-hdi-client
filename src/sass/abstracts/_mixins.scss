@@ -14,14 +14,14 @@
 }
 @mixin roundButton {
   //write CSS code here
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 700;
   border-radius: 30px;
   // background: #343434;
   box-shadow: none;
-  padding: 0 20px;
+  padding: 1rem 2rem;
   color: #fff;
-  height: 2.2rem;
+
   line-height: inherit;
 }
 
