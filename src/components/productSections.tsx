@@ -1,19 +1,21 @@
 import React from 'react'
-import ProductCard from '../components/ProductCard'
-import { Row, Col } from 'antd'
-import { productArray } from './mocdata.js'
+import ProductCard from './ProductCard'
 
-const ProductSections: React.FC<{}> = () => {
+interface ProductSectionsProps {
+  header: string
+  subHeader: string
+  products: any
+}
+
+const ProductSections: React.FC<ProductSectionsProps> = ({ header, subHeader, products }) => {
   return (
     <div>
       <div className="product_section_container">
-        <h1>FEATURED PRODUCTS</h1>
-        <p>
-          Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem
-        </p>
+        <h2 className="main-header mb-2">{header}</h2>
+        <div className="sub-header mb-3">{subHeader}</div>
       </div>
       <div className="products_card_container mt-4">
-        {productArray.map((product: any) => (
+        {products.map((product: any) => (
           <ProductCard
             productName={product.title}
             productPrice={product.price}

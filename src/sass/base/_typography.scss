@@ -1,5 +1,7 @@
 body {
-  font-family: 'Lato', sans-serif;
+  // font-family: 'Lato', sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: 1.7;
   color: #777;
@@ -7,4 +9,14 @@ body {
 
 .site-page-header {
   font-weight: 600;
+}
+
+.main-header {
+  font-size: 2.7rem;
+  font-weight: 600;
+}
+
+.sub-header {
+  font-size: 1.6rem;
+  font-weight: 500;
 }

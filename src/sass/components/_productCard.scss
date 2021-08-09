@@ -47,6 +47,10 @@
     font-size: 20px;
     opacity: 1;
     white-space: nowrap;
+
+    &:hover {
+      background-color: #dd3a3fd9;
+    }
   }
 
   &_image_container {
@@ -67,7 +71,7 @@
   }
   &_name {
     color: #2e2e2e;
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 500;
     line-height: 24px;
     margin-bottom: 5px;
@@ -80,7 +84,7 @@
     }
   }
   &_price {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: #292929;
     font-weight: 500;
     margin-top: 1em;
@@ -88,12 +92,6 @@
 }
 
 .overlay {
-  // display: flex;
-  // transition: 0.5s ease;
-  // flex-wrap: nowrap;
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
   @include absCenter;
 }
 
