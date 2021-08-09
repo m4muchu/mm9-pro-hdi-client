@@ -16,6 +16,7 @@
   background: white;
   text-align: center;
   border: 1px solid #ebebeb;
+  border-left: 1px solid transparent;
   display: inline-block;
   min-width: 240px;
   margin-top: -1px;
@@ -94,6 +95,9 @@
 .overlay {
   @include absCenter;
 }
+.common_round_button {
+  // // opacity: 0;
+  opacity: 0;
 
 .product_card:hover .product_card_quickview {
   opacity: 1;

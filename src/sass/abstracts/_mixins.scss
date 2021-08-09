@@ -5,6 +5,11 @@
     clear: both;
   }
 }
+@mixin middle {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
 
 @mixin absCenter {
   position: absolute;

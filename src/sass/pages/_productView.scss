@@ -31,6 +31,22 @@
   &_cart_instock {
     display: flex;
     align-items: center;
+<<<<<<< HEAD
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 30px;
+    background: #343434;
+    box-shadow: none;
+    padding: 0 20px;
+    color: #fff;
+    height: 2.2rem;
+    line-height: inherit;
+    font-family: 'Oswald', sans-serif;
+
+    @include roundButton;
+    background: #343434;
+=======
+>>>>>>> home layouting
   }
 }
 .product_view_data {
