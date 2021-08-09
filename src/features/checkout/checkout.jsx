@@ -1,21 +1,20 @@
 import React from 'react'
 import { Row, Col, Select, InputNumber, Card } from 'antd'
-import Icon from '@ant-design/icons';
-import ProductFilter from '../../components/productFilter';
-import CartModal from '../../components/cartModal';
-import CartDropdown from '../../components/cartDropdown';
-
+import Icon from '@ant-design/icons'
+import ProductFilter from '../../components/productFilter'
+import CartModal from '../../components/cartModal'
+import CartDropdown from '../../components/cartDropdown'
 
 function checkout() {
-    const { Option } = Select
+  const { Option } = Select
 
-    return (
-        <div>
-            {/* <CartModal /> */}
+  return (
+    <div>
+      <CartModal />
 
-            {/* <CartDropdown /> */}
-            <ProductFilter />
-            {/* <Row gutter={24}>
+      {/* <CartDropdown /> */}
+      {/* <ProductFilter /> */}
+      {/* <Row gutter={24}>
                 <Col span={14} offset={3}>
                     <Card>
                         <h3 className="checkout_header">SHOPPING CART</h3>
@@ -74,8 +73,8 @@ function checkout() {
                 </Col>
             </Row>
             <p className="checkout_back"><span>&lt;</span> Continue shopping</p> */}
-        </div>
-    )
+    </div>
+  )
 }
 
 export default checkout
