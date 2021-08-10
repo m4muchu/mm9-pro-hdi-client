@@ -1,8 +1,8 @@
 @import '~bootstrap-css-only/css/bootstrap.min.css';
+
 @import 'abstracts/variables';
 @import 'abstracts/functions';
-// @import 'abstracts/variables';
-@import 'abstracts/override';
+// @import 'abstracts/override';
 @import 'abstracts/mixins';
 
 @import 'base/base';
@@ -11,7 +11,7 @@
 @import 'base/utilities';
 
 @import 'layout/header';
-@import 'pages/productView';
+
 @import 'components/productCard';
 @import 'components/star';
 @import 'components/carousal';
@@ -19,11 +19,11 @@
 @import 'components/productFilter';
 // @import 'components/cartDropdown';
 @import 'components/cartModal';
+@import 'components/category';
 
 @import 'base/typography';
 @import 'base/base';
 @import 'base/animations';
-// @import 'base/utilities';
 
 @import 'pages/checkout';
 @import 'components/card';
@@ -31,3 +31,5 @@
 @import 'pages/home';
 @import 'pages/login';
 @import 'pages/checkout';
+@import 'pages/categories';
+@import 'pages/productView';

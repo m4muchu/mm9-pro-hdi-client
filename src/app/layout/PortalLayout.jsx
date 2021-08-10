@@ -36,10 +36,8 @@ export const PortalLayout = () => {
   return (
     <>
       <HeaderLayout />
-      <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
-        <Content className="site-layout" style={{ padding: '0 50px', marginTop: 64 }}>
-          {switchRoutes}
-        </Content>
+      <div className="site-layout-background">
+        <Content className="site-layout">{switchRoutes}</Content>
       </div>
       <FooterLayout />
     </>

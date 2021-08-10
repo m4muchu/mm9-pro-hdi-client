@@ -6,7 +6,6 @@ import { Link, useHistory } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { isAuthenticated, setUserAuthenticated } from '../../features/auth/authSlice'
 import { configConstants } from '../../constants/config-constants'
-import BannerCarousal from '../../features/home/BannerCarousal'
 
 const { SubMenu } = Menu
 const { Search } = Input
@@ -165,7 +164,6 @@ const HeaderLayout = () => {
           </div>
         </div>
       </div>
-      <BannerCarousal />
     </>
   )
 }

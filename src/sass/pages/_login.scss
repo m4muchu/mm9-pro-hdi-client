@@ -1,4 +1,5 @@
 .login {
+  @include sections;
   &-wrapper {
     width: 50%;
     margin: auto;

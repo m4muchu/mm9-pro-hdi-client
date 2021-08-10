@@ -4,6 +4,7 @@
   width: 300px;
 }
 .product_view {
+  @include sections;
   &_data_name {
     font-family: 'Poppins', sans-serif;
     color: #2e2e2e;

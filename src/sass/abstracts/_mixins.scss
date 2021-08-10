@@ -29,6 +29,16 @@
 
   line-height: inherit;
 }
+@mixin sections {
+  padding: 0 5rem;
+  margin: 5rem 0;
+}
+
+@mixin normalFont {
+  font-size: $mm9-normal-font-size;
+  font-weight: 500;
+  color: $mm9-black;
+}
 
 // MEDIA QUERY MANAGER
 /*

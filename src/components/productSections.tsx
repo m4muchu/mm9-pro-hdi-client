@@ -9,7 +9,7 @@ interface ProductSectionsProps {
 
 const ProductSections: React.FC<ProductSectionsProps> = ({ header, subHeader, products }) => {
   return (
-    <div>
+    <div className="product_section_wrapper">
       <div className="product_section_container">
         <h2 className="main-header mb-2">{header}</h2>
         <div className="sub-header mb-3">{subHeader}</div>

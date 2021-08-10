@@ -1,0 +1,22 @@
+.category {
+  transition: all 0.5s ease-in;
+  &__icon {
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    &:hover {
+      border: 2px solid $mm9-border-color;
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__title {
+    @include normalFont;
+    text-align: center;
+    padding-top: 1rem;
+    text-transform: uppercase;
+  }
+}
