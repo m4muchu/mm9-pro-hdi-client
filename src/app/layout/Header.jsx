@@ -6,26 +6,101 @@ import { Link, useHistory } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { isAuthenticated, setUserAuthenticated } from '../../features/auth/authSlice'
 import { configConstants } from '../../constants/config-constants'
+import { isEmpty } from 'lodash'
 
 const { SubMenu } = Menu
 const { Search } = Input
 
 const menu = (
   <Menu>
-    <Menu.ItemGroup title="Group title">
-      <Menu.Item>1st menu item</Menu.Item>
-      <Menu.Item>2nd menu item</Menu.Item>
-    </Menu.ItemGroup>
-    <SubMenu title="sub menu">
-      <Menu.Item>3rd menu item</Menu.Item>
-      <Menu.Item>4th menu item</Menu.Item>
-    </SubMenu>
-    <SubMenu title="disabled sub menu" disabled>
-      <Menu.Item>5d menu item</Menu.Item>
-      <Menu.Item>6th menu item</Menu.Item>
+    <SubMenu className="text-uppercase" title="jerseys">
+      <Menu.Item className="text-capitalize">new arrivals</Menu.Item>
+      <Menu.Item className="text-capitalize">club jerseys</Menu.Item>
+      <Menu.Item className="text-capitalize">National team jerseys</Menu.Item>
+      <Menu.Item className="text-capitalize">previous season</Menu.Item>
+      <Menu.Item className="text-capitalize">Retro kits</Menu.Item>
     </SubMenu>
   </Menu>
 )
+
+const menuHash = {
+  clothing: [
+    {
+      subTitle: 'jerseys',
+      menuItems: [
+        'new arrivals',
+        'club jerseys',
+        'National team jerseys',
+        'previous season',
+        'Retro kits',
+      ],
+    },
+    {
+      subTitle: 'training',
+      menuItems: ['training kit', 'shorts', 'socks', 'training bibs'],
+    },
+    {
+      subTitle: 'lifestyle',
+      menuItems: ['Polo t-shirts', 't-shirts', 'sweatshirts & hoodies'],
+    },
+    {
+      subTitle: 'women & kids',
+      menuItems: ['Shop for women', 'Shop for kids', 'sweatshirts & hoodies'],
+    },
+  ],
+  football: [
+    {
+      subTitle: 'footballs',
+      menuItems: [],
+    },
+    {
+      subTitle: 'football boots',
+      menuItems: [],
+    },
+    {
+      subTitle: 'training equipments',
+      menuItems: ['Goal keeper gloves', 'shin pads', 'equipments', 'others'],
+    },
+  ],
+  fanstore: [
+    {
+      subTitle: 'phone cases',
+      menuItems: [],
+    },
+    {
+      subTitle: 'key chains',
+      menuItems: [],
+    },
+    {
+      subTitle: 'action figures',
+      menuItems: [],
+    },
+  ],
+}
+
+const menuItemRender = navTitle => {
+  const menuData = menuHash?.[navTitle]
+
+  const renderMenu = (
+    <Menu>
+      {menuData?.map(menu => {
+        !isEmpty(menu?.menuItems)
+          ? (menu = (
+              <SubMenu className="text-uppercase" title={menu.subTitle}>
+                {menu?.menuItems?.map(item => (
+                  <Menu.Item className="text-capitalize">{item}</Menu.Item>
+                ))}
+              </SubMenu>
+            ))
+          : (menu = <Menu.Item className="text-capitalize">{menu.subTitle}</Menu.Item>)
+
+        return menu
+      })}
+    </Menu>
+  )
+
+  return renderMenu
+}
 
 const HeaderLayout = () => {
   const history = useHistory()
@@ -39,19 +114,31 @@ const HeaderLayout = () => {
       to: '/home/',
     },
     {
-      label: 'Women',
+      label: 'clothing',
       to: '/women/',
-      dropDown: menu,
+      dropDown: true,
     },
     {
-      label: 'Men',
+      label: 'football',
       to: '/men/',
-      dropDown: menu,
+      dropDown: true,
     },
     {
-      label: 'Accessories',
+      label: 'fanstore',
       to: '/accessories/',
-      dropDown: menu,
+      dropDown: true,
+    },
+    {
+      label: 'rewards',
+      to: '/accessories/',
+    },
+    {
+      label: 'giftcard',
+      to: '/accessories/',
+    },
+    {
+      label: 'support',
+      to: '/accessories/',
     },
   ]
   console.log('history+++++++++++++', routerHistory)
@@ -115,7 +202,7 @@ const HeaderLayout = () => {
               <ul className="header-navbar-nav navbar-nav me-auto mb-2 mb-lg-0">
                 {navItems.map(nav =>
                   nav.dropDown ? (
-                    <Dropdown overlay={menu}>
+                    <Dropdown overlay={() => menuItemRender(nav.label)}>
                       <li className="header-navbar-nav-item nav-item">
                         <Link
                           className="nav-link text-uppercase text-white ml-2"
