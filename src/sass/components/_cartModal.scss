@@ -4,25 +4,74 @@
     font-weight: 600;
     padding: 0.5rem 1.25rem;
     color: #fff;
-    background-color: #333 !important;
+    background-color: $mm9-black !important;
     border-color: transparent;
     margin-right: 1rem;
+
+    &_wrapper {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    &--continue {
+      @include respond('tab-land') {
+        width: 100%;
+      }
+    }
+
+    &--proceed {
+      @include respond('tab-land') {
+        margin-top: 1rem;
+        width: 100%;
+      }
+    }
   }
   &_image {
     border: 1px solid #ebebeb;
+
     & > img {
-      width: 100%;
+      object-fit: cover;
+      height: 20rem;
+      width: 20rem;
+      overflow: hidden;
+
+      @include respond('phone') {
+        width: 100%;
+      }
     }
   }
   &_wrapper {
     background: white;
     padding: 3.125rem 1.875rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+    @include respond('phone') {
+      display: block;
+    }
   }
   &_product_details {
-    font-size: 1.6rem;
+    font-size: $mm9-normal-font-size;
     margin-bottom: 20px;
+
+    @include respond('tab-land') {
+      margin-left: 2rem;
+    }
+
+    @include respond('phone') {
+      margin-top: 2rem;
+      margin-left: 0;
+    }
   }
-  &_product_bil {
+  &_product_bill {
+    font-size: $mm9-normal-font-size;
     padding-left: 2.5rem;
+
+    @include respond('phone') {
+      padding-left: 0;
+    }
   }
 }

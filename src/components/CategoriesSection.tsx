@@ -1,5 +1,4 @@
 import React from 'react'
-import ProductCard from './ProductCard'
 import Category from './Category'
 
 interface CategorySectionProps {

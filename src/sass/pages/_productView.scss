@@ -4,13 +4,12 @@
   width: 300px;
 }
 .product_view {
-  @include sections;
+  @include page;
   &_data_name {
-    font-family: 'Poppins', sans-serif;
-    color: #2e2e2e;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 24px;
+    color: $mm9-black;
+    font-size: $mm9-large-font-size;
+    font-weight: 600;
+    line-height: 2.4rem;
     text-transform: capitalize;
   }
   &_share {
@@ -54,8 +53,13 @@
     background-color: green($color: #000000);
   }
   &_price {
+    font-size: $mm9-normal-font-size;
     margin-top: 10px;
     font-weight: 700;
     line-height: 1.1;
+  }
+
+  &_description {
+    font-size: $mm9-normal-font-size;
   }
 }

@@ -26,12 +26,18 @@
   box-shadow: none;
   padding: 1rem 2rem;
   color: #fff;
+  border: 1px solid transparent;
 
   line-height: inherit;
 }
 @mixin sections {
   padding: 0 5rem;
   margin: 5rem 0;
+}
+
+@mixin page {
+  padding: 0 5rem;
+  margin: 10rem 0;
 }
 
 @mixin normalFont {
