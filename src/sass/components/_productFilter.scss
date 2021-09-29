@@ -1,6 +1,14 @@
 .product_filter {
   //   @include middle;
 
+  &_container {
+    box-shadow: none;
+    background: #fff;
+    padding: 30px 20px;
+    margin-bottom: 30px;
+    border: 1px solid #ebebeb;
+  }
+
   li {
     line-height: 25px !important;
     margin-top: 0.7rem;
@@ -24,5 +32,8 @@
 
     background-color: #333;
     border-color: transparent;
+  }
+  .product_list_container {
+    padding: 15px;
   }
 }

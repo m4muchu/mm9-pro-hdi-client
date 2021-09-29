@@ -1,0 +1,41 @@
+.product_list_header {
+  border: 1px solid #ebebeb;
+  padding: 15px;
+  margin-bottom: 30px;
+  //   background-color: aqua;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  &_product_count {
+    line-height: 24px;
+    font-size: 12px;
+    padding: 6px 15px;
+    margin: 0;
+    float: left;
+  }
+  &_icons {
+    // @include middle;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  &_sort {
+    line-height: 24px;
+    font-size: 12px;
+    padding: 6px 15px;
+    margin: 0;
+    float: left;
+  }
+  &_inner {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+  }
+}

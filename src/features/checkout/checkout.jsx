@@ -10,7 +10,7 @@ function checkout() {
 
   return (
     <div>
-      <CartModal />
+      {/* <CartModal /> */}
 
       {/* <CartDropdown /> */}
       {/* <ProductFilter /> */}
@@ -36,7 +36,9 @@ function checkout() {
               <Col className="checkout_item_price" span={4}>
                 $16.95
               </Col>
-              <Col span={2}>deletes</Col>
+              <Col span={2}>
+                <img src="https://img.icons8.com/material-outlined/16/000000/trash--v1.png" />
+              </Col>
             </Row>
           </Card>
         </Col>
@@ -73,10 +75,10 @@ function checkout() {
             </div>
           </Card>
         </Col>
+        <p className="checkout_back">
+          <span>&lt;</span> Continue shopping
+        </p>
       </Row>
-      <p className="checkout_back">
-        <span>&lt;</span> Continue shopping
-      </p>
     </div>
   )
 }

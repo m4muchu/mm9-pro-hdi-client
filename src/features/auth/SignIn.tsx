@@ -24,8 +24,8 @@ const Login = () => {
         .signIn(params)
         .then((response: LoginResponse) => {
           const { data } = response
-          if (data.accessToken) {
-            localStorage.setItem(configConstants.TOKEN_NAME, data.accessToken)
+          if (data?.accessToken) {
+            localStorage.setItem(configConstants.TOKEN_NAME, data?.accessToken)
             dispatch(setUserAuthenticated({ authenticated: true }))
             history.push('/')
           }

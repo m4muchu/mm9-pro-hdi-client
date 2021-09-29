@@ -60,7 +60,7 @@ export function downloadAttachment(options) {
 }
 
 //Formate Request Options
-export function requestOptions(method = 'GET', url=null, params = null, isAuthenticated = true, contentType = null, cancelToken = null ) {
+export function requestOptions(method = 'GET', url=null, params = {}, isAuthenticated = true, contentType = null, cancelToken = null ) {
     let fullUrl =  getRouteApiUrl();
     let requestOptions = {
         headers: {'Content-Type': 'application/x-www-form-urlencoded'},

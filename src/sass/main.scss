@@ -13,6 +13,8 @@
 @import 'layout/header';
 
 @import 'components/productCard';
+@import 'components/productListHeader';
+
 @import 'components/star';
 @import 'components/carousal';
 @import 'components/carousal';
@@ -29,6 +31,7 @@
 @import 'components/card';
 
 @import 'pages/home';
+@import 'pages/productList';
 @import 'pages/login';
 @import 'pages/checkout';
 @import 'pages/categories';
