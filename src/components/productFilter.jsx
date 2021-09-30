@@ -111,9 +111,9 @@ function ProductFilter({ products }) {
         </Col>
         <Col span={17} className="product_list_container">
           <ProductListHeader />
-          {/* {products?.map(prod => (
+          {products?.map(prod => (
             <ProductCardLarge product={prod} />
-          ))} */}
+          ))}
         </Col>
       </Row>
     </div>
