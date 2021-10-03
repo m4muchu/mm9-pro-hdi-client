@@ -34,7 +34,7 @@ function Cart() {
 
       setIsLoading(true)
       cartServices
-        .editCart({ variantSku: data.variantSku, quantity: data.quantity, userId: data.userId })
+        .editCart(data)
         .then(response => {
           console.log('response from api call edit cart list', response)
           // if (response) {
