@@ -5,9 +5,10 @@ interface ProductSectionsProps {
   header: string
   subHeader: string
   products: any
+  addToCart:()=>{void:any}
 }
 
-const ProductSections: React.FC<ProductSectionsProps> = ({ header, subHeader, products }) => {
+const ProductSections: React.FC<ProductSectionsProps> = ({ header, subHeader, products,addToCart }) => {
   return (
     <div className="product_section_wrapper">
       <div className="product_section_container">
@@ -21,6 +22,7 @@ const ProductSections: React.FC<ProductSectionsProps> = ({ header, subHeader, pr
             productPrice={product.price}
             isNew={true}
             imageURL={product.image}
+            addToCart={addToCart}
           />
         ))}
       </div>

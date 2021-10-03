@@ -1,9 +1,9 @@
-.checkout_header {
+.cart_header {
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.1;
 }
-.checkout {
+.cart {
   &_back {
     color: #414141;
     font-size: 0.875rem;
@@ -25,7 +25,7 @@
     color: #414141;
   }
 }
-// .checkout__item_price {
+// .cart__item_price {
 //   font-weight: 900 !important;
 //   color: red !important;
 // }

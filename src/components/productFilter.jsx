@@ -6,7 +6,7 @@ import ProductList from '../features/productList/productList'
 import ProductListHeader from './productListHeader'
 var colorArray = ['red', 'pink', 'green', 'blue', 'indigo']
 
-function ProductFilter({ products }) {
+function ProductFilter({ products, addCartData }) {
   useEffect(() => {
     console.log('product is ', products)
   }, [products])
@@ -111,8 +111,8 @@ function ProductFilter({ products }) {
         </Col>
         <Col span={17} className="product_list_container">
           <ProductListHeader />
-          {products?.map(prod => (
-            <ProductCardLarge product={prod} />
+          {products?.map?.(prod => (
+            <ProductCardLarge product={prod} addCartData={addCartData} />
           ))}
         </Col>
       </Row>

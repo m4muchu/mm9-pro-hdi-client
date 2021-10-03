@@ -9,6 +9,13 @@ interface ProductCardProps {
   imageURL: string
   productPrice: number
   productName: string
+  addToCart:()=>{void:any}
+}
+export interface cartProps {
+  productId: number;
+  userId: number;
+  variantSku: string;
+  quantity: number;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -16,6 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imageURL,
   productPrice,
   productName,
+  addToCart
 }) => {
   const history = useHistory()
   const [modalStatus, setModalStatus] = useState(false)
@@ -53,7 +61,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <AddToCartModal
           modalStatus={modalStatus}
           cancelModal={cancelModal}
-          proceedToCheckout={() => console.log('checkout')}
+          proceedToCheckout={() => addToCart()}
         />
       )}
     </>

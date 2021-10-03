@@ -1,24 +1,35 @@
 import { request } from './httpService'
 
-interface categoryType{
-    name:string;
-    id:string;
-    level:number;
-
+interface categoryType {
+  name: string
+  id: string
+  level: number
 }
-
+type root = {
+  root: boolean
+}
+type categoryByIdProps = {
+  id: string
+}
 export const categoryServices = {
-    listCategory,
+  listCategory,
+  listCategoryById,
 }
 
-function listCategory() {
-    return request({
-      method: 'GET',
-      url: `productCategory`,
-    //   param: params,
-      contentType: 'json',
-    })
-  }
-  
+function listCategory(params: root) {
+  return request({
+    method: 'GET',
+    url: `product-category`,
+    param: params,
+    contentType: 'json',
+  })
+}
 
-
+function listCategoryById(params: categoryByIdProps) {
+  return request({
+    method: 'GET',
+    url: `product-category`,
+    param: params,
+    contentType: 'json',
+  })
+}

@@ -1,9 +1,10 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Divider } from 'antd'
 import ProductSections from '../../components/productSections'
 import BannerCarousal from './BannerCarousal'
 import { productArray } from '../../utils/mocdata'
 import CategorySection from '../../components/CategoriesSection'
+import { cartServices } from '../../api/cart'
 
 const categories = [
   {
@@ -34,6 +35,33 @@ const categories = [
 ]
 
 export default function Home() {
+  const [cartData, setCartData] = useState({})
+  const [isLoading, setIsLoading] = useState(false)
+
+  const apiCalls = {
+    cartListApi: () => {
+      setIsLoading(true)
+      cartServices
+        .listCart({ userId: 1 })
+        .then(response => {
+          console.log('response from api call cart list', response)
+          const { data } = response
+          if (response.success == true) {
+            setCartData(data)
+          }
+        })
+        // .catch(({ data: { message } }: { data: { message} }) => {
+        //   console.log('err++++++++++++++++', message)
+        //   setServerValidationMessage(message)
+        // })
+        .finally(() => {
+          setIsLoading(false)
+        })
+    },
+  }
+  // useEffect(() => {
+  //   apiCalls.cartListApi()
+  // }, [])
   return (
     <div>
       <BannerCarousal />
@@ -47,6 +75,7 @@ export default function Home() {
         header="FEATURED PRODUCTS"
         subHeader="Typi non habent claritatem insitam est usus legentis in iis qui facit eorum claritatem"
         products={productArray}
+        addToCart={apiCalls.cartListApi}
       />
     </div>
   )

@@ -5,7 +5,7 @@ import ProductFilter from '../../components/productFilter'
 import CartModal from '../../components/cartModal'
 import CartDropdown from '../../components/cartDropdown'
 
-function checkout() {
+function Checkout() {
   const { Option } = Select
 
   return (
@@ -83,4 +83,4 @@ function checkout() {
   )
 }
 
-export default checkout
+export default Checkout
